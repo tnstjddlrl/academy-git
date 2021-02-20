@@ -1,4 +1,4 @@
-package com.academy;
+package com.baeshinza.academy;
 
 import android.app.Application;
 import android.content.Context;
