@@ -9,15 +9,14 @@ import {
   StatusBar,
 } from 'react-native';
 
-import Banner from './banner'
+ const mybannerid = 'ca-app-pub-8664195159890176/8498097032'
 
-const App = ()=>{
+const Banner = ()=>{
   return(
-    <View>
-      <Banner></Banner>
-      <Text>안녕</Text>
-    </View>
+      <BannerAd unitId={mybannerid} size={BannerAdSize.FULL_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,}}  />
   )
 }
 
-export default App;
+export default Banner;
