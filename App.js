@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(()=>{
     setTimeout(() => {
-      navigation.navigate('인트로')  
+      navigation.navigate('인트로')
     }, 1000);
   })
 
