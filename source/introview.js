@@ -8,7 +8,13 @@ import {
     StatusBar,
     Dimensions,
     Image,
+    Animated,
+    TouchableWithoutFeedback
   } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
   
   const charwidth = Dimensions.get('window').width
   const charheight = Dimensions.get('window').height
@@ -67,38 +73,40 @@ import {
             {/*  */}
 
             {/*  */}
+            <TouchableWithoutFeedback>
             <View style={{width:charwidth,height:charheight}}>
-              <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+              <Animated.View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                 <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:40}}>앞의 내용은 잘 읽으셨나요?</Text>
-              </View>
-              <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
+              </Animated.View>
+              <Animated.View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
                 <Image source={onboard4} style={{maxWidth:charwidth-20,maxHeight:charheight/2.2}}></Image>
-              </View>
+              </Animated.View>
 
               <View style={{flex:2,alignItems:'center'}}>
 
-              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:40,margin:5}}>따라올 준비가 되었다면 눌러주세요!</Text>
+              <Animated.Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:40,margin:5}}>따라올 준비가 되었다면 눌러주세요!</Animated.Text>
+              <Animated.Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',marginTop:20,margin:10}}>화면을 눌러 시작해볼까요?</Animated.Text>
               
               </View>
             </View>
+            </TouchableWithoutFeedback>
             {/*  */}
 
 
-            <View style={{width:charwidth,height:charheight,backgroundColor:'yellow'}}>
-              <Text>마지막페이지</Text>
-              <View style={{alignContent:'flex-end',flex:1}}>
-                <View style={{width:charwidth,height:50,backgroundColor:'red'}}><Text>시작!</Text></View>
-              </View>
-
-
-            </View>
-
-
-            <Text>인트로 바뀜</Text>
           </ScrollView>
             
         </View>
       )
+  }
+
+  function goodbyeIntro () {
+    const storeData = async () => {
+      try {
+        await AsyncStorage.setItem('@is_first', 'no')
+      } catch (e) {
+        console.log(e)
+      }
+    }
   }
 
   export default IntroView
