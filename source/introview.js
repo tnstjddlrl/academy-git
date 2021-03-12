@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -10,6 +10,8 @@ import {
     Dimensions,
     Image,
     TouchableWithoutFeedback,
+    BackHandler,
+    Alert
   } from 'react-native';
 import Navi from '../App';
   
@@ -20,13 +22,53 @@ import Navi from '../App';
   const onboard2 = require('../img/onboard2.png')
   const onboard3 = require('../img/onboard3.png')
   const onboard4 = require('../img/onboard4.png')
+  const onboard5 = require('../img/onboard5.png')
 
 
   const IntroView = () =>{
     const navigation = useNavigation()
+
+    useEffect(() => {
+      const backAction = () => {
+        Alert.alert("잠시만요!", "다음에 배우실 건가요?", [
+          {
+            text: "아니요! 조금 더 배울래요!",
+            onPress: () => null,
+            style: "cancel"
+          },
+          { text: "네, 다음에 올게요!", onPress: () => BackHandler.exitApp() }
+        ]);
+        return true;
+      };
+  
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+  
+      return () => backHandler.remove();
+    }, []);
+
       return(
         <View>
           <ScrollView horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}>
+
+            {/*  */}
+            <View style={{width:charwidth,height:charheight}}>
+              <View style={{flex:1.5,justifyContent:'flex-end',alignItems:'center'}}>
+                <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:40}}>이앱을 처음 쓰는 당신께</Text>
+              </View>
+              <View style={{flex:3,justifyContent:'center',alignItems:'center'}}>
+                <Image source={onboard5} style={{maxWidth:charwidth-20,maxHeight:charheight/2.2}}></Image>
+              </View>
+
+              <View style={{flex:2,alignItems:'center',justifyContent:'flex-start'}}>
+              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',marginTop:20,margin:10,lineHeight:30}}>안녕하세요? </Text>
+              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',margin:10,lineHeight:30}}>저희는 이 앱을 만든 배신자컴퍼니 입니다. 앱을 소개해드릴게요!</Text>
+              </View>
+            </View>
+            {/*  */}
+
 
             {/*  */}
             <View style={{width:charwidth,height:charheight}}>
