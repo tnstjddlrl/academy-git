@@ -23,6 +23,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import SelectSubj from './source/selectSubject';
 import CSelect from './source/cSelect';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const charwidth = Dimensions.get('window').width
 const charheight = Dimensions.get('window').height
 
@@ -33,11 +35,29 @@ const codeimg = require('./img/code.png')
 const App = () => {
   const navigation = useNavigation()
 
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@storage_Key')
+      return value
+    } catch(e) {
+      console.log(e)
+    }
+  }
+  
+
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('인트로')
-    }, 1000);
-  })
+   getData().then((res)=>{
+     if(res!=null){
+      setTimeout(() => {
+        navigation.navigate('선택화면')
+      }, 1000);
+     }else{
+      setTimeout(() => {
+        navigation.navigate('인트로')
+      }, 1000);
+     }
+   })
+  },[])
 
   return (
     <View>

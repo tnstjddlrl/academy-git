@@ -13,7 +13,9 @@ import {
     BackHandler,
     Alert
   } from 'react-native';
-import Navi from '../App';
+
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
   
   const charwidth = Dimensions.get('window').width
   const charheight = Dimensions.get('window').height
@@ -36,18 +38,28 @@ import Navi from '../App';
             onPress: () => null,
             style: "cancel"
           },
-          { text: "네, 다음에 올게요!", onPress: () => BackHandler.exitApp() }
+          {text: "네, 다음에 올게요!", onPress: () => BackHandler.exitApp()}
         ]);
         return true;
       };
-  
       const backHandler = BackHandler.addEventListener(
         "hardwareBackPress",
         backAction
       );
-  
       return () => backHandler.remove();
     }, []);
+
+
+    const storeData = async () => {
+      try {
+        await AsyncStorage.setItem('@storage_Key', 'nofirst')
+        Alert.alert('성공')
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+
 
       return(
         <View>
@@ -113,7 +125,7 @@ import Navi from '../App';
             {/*  */}
 
             {/*  */}
-            <TouchableWithoutFeedback onPress={()=>{navigation.navigate('선택화면')}}>
+            <TouchableWithoutFeedback onPress={()=>{navigation.navigate('선택화면'),storeData()}}>
             <View style={{width:charwidth,height:charheight}}>
               <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
                 <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:40}}>앞의 내용은 잘 읽으셨나요?</Text>
