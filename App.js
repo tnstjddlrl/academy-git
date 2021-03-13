@@ -21,6 +21,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import SelectSubj from './source/selectSubject';
+import CSelect from './source/cSelect';
 
 const charwidth = Dimensions.get('window').width
 const charheight = Dimensions.get('window').height
@@ -65,6 +66,7 @@ const Navi = () => {
         <Stack.Screen name="App" component={App} />
         <Stack.Screen name="인트로" component={IntroView} />
         <Stack.Screen name="선택화면" component={SelectSubj} />
+        <Stack.Screen name="c언어선택" component={CSelect} />
       </Stack.Navigator>
     </NavigationContainer>
   );

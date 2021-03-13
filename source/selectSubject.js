@@ -9,8 +9,12 @@ import {
   Dimensions,
   Image,
   BackHandler,
-  Alert
+  Alert,
+  TouchableOpacity,
+  TouchableWithoutFeedback
 } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
   
 const charwidth = Dimensions.get('window').width
@@ -19,6 +23,8 @@ const charheight = Dimensions.get('window').height
 const selectSubject = require('../img/selectSubject.png')
 
 const SelectSubj = () =>{
+  const navigation = useNavigation()
+
     useEffect(() => {
         const backAction = () => {
           Alert.alert("잠시만요!", "다음에 배우실 건가요?", [
@@ -51,10 +57,12 @@ const SelectSubj = () =>{
         </View>
 
         <View style={{flex:2,alignItems:'center',justifyContent:'flex-start'}}>
+          <TouchableWithoutFeedback onPress={()=>navigation.navigate('c언어선택')}>
             <View style={{width:charwidth-40,height:60,backgroundColor:'#CBBCE7',justifyContent:'center',alignItems:'center',borderRadius:20}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>C언어</Text>
                 <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'#888'}}>-지금 수강가능!-</Text>
             </View>
+            </TouchableWithoutFeedback>
 
             <View style={{width:charwidth-40,height:60,backgroundColor:'#A083D3',justifyContent:'center',alignItems:'center',borderRadius:20,marginTop:10}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>자바스크립트</Text>
