@@ -51,7 +51,7 @@ const CSelect = () => {
             </View>
 
             <View style={{ flex: 3 }}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:40}}>
                     <View style={{ width: charwidth - 60, height: 80, borderRadius: 10, backgroundColor: '#e6e6e6', marginLeft: 30, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ fontFamily: 'DoHyeon', textAlign: 'center', fontSize: 23 }}>처음부터시작!</Text>
                     </View>

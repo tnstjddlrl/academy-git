@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
   
 const charwidth = Dimensions.get('window').width
@@ -46,8 +47,25 @@ const SelectSubj = () =>{
         return () => backHandler.remove();
       }, []);
 
+      function show () {
+        Toast.show({
+          type: 'info',
+          position: 'top',
+          text1: '조금만 기다려주세요.',
+          text2: '선택하신 강의는 제작중에 있어요! 👋',
+          visibilityTime: 4000,
+          autoHide: true,
+          topOffset: 30,
+          bottomOffset: 40,
+          onShow: () => {},
+          onHide: () => {},
+          onPress: () => {}
+        });
+      }
+
     return(
         <View style={{width:charwidth,height:charheight}}>
+          
         <View style={{flex:1,justifyContent:'flex-end',alignItems:'center'}}>
           <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:45}}>원하는 언어를</Text>
           <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:45}}>선택하세요!</Text>
@@ -64,17 +82,22 @@ const SelectSubj = () =>{
             </View>
             </TouchableWithoutFeedback>
 
+            <TouchableWithoutFeedback onPress={()=>show()}>
             <View style={{width:charwidth-40,height:60,backgroundColor:'#A083D3',justifyContent:'center',alignItems:'center',borderRadius:20,marginTop:10}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>자바스크립트</Text>
                 <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'black'}}>-오픈예정!-</Text>
             </View>
+            </TouchableWithoutFeedback>
 
+            <TouchableWithoutFeedback onPress={()=>show()}>
             <View style={{width:charwidth-40,height:60,backgroundColor:'#7E57C2',justifyContent:'center',alignItems:'center',borderRadius:20,marginTop:10}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>파이썬</Text>
                 <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'black'}}>-오픈예정!-</Text>
             </View>
+            </TouchableWithoutFeedback>
 
         </View>
+        <Toast ref={(ref) => Toast.setRef(ref)} />
       </View>
     )
 }
