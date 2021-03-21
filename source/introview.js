@@ -53,7 +53,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     const storeData = async () => {
       try {
         await AsyncStorage.setItem('@storage_Key', 'nofirst')
-        Alert.alert('성공')
       } catch (e) {
         console.log(e)
       }
@@ -76,7 +75,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
               <View style={{flex:2,alignItems:'center',justifyContent:'flex-start'}}>
               <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',marginTop:20,margin:10,lineHeight:30}}>안녕하세요? </Text>
-              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',margin:10,lineHeight:30}}>저희는 이 앱을 만든 배신자컴퍼니 입니다. 앱을 소개해드릴게요!</Text>
+              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'gray',margin:10,lineHeight:30}}>저희는 이 앱을 만든 배신자컴퍼니 입니다. 앱을 소개해드릴게요.</Text>
+              <Text style={{fontFamily:'DoHyeon',textAlign:'center',fontSize:25,color:'black',margin:10,lineHeight:30}}>오른쪽으로 넘겨주세요!</Text>
               </View>
             </View>
             {/*  */}

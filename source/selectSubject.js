@@ -66,12 +66,12 @@ const SelectSubj = () =>{
 
             <View style={{width:charwidth-40,height:60,backgroundColor:'#A083D3',justifyContent:'center',alignItems:'center',borderRadius:20,marginTop:10}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>자바스크립트</Text>
-                <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'#888'}}>-오픈예정!-</Text>
+                <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'black'}}>-오픈예정!-</Text>
             </View>
 
             <View style={{width:charwidth-40,height:60,backgroundColor:'#7E57C2',justifyContent:'center',alignItems:'center',borderRadius:20,marginTop:10}}>
                 <Text style={{fontFamily:'DoHyeon',fontSize:30}}>파이썬</Text>
-                <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'#888'}}>-오픈예정!-</Text>
+                <Text style={{fontFamily:'DoHyeon',fontSize:20,color:'black'}}>-오픈예정!-</Text>
             </View>
 
         </View>

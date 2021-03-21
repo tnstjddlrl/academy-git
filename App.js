@@ -24,6 +24,7 @@ import SelectSubj from './source/selectSubject';
 import CSelect from './source/cSelect';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import C1 from './source/C1';
 
 const charwidth = Dimensions.get('window').width
 const charheight = Dimensions.get('window').height
@@ -87,6 +88,7 @@ const Navi = () => {
         <Stack.Screen name="인트로" component={IntroView} />
         <Stack.Screen name="선택화면" component={SelectSubj} />
         <Stack.Screen name="c언어선택" component={CSelect} />
+        <Stack.Screen name="C1" component={C1} />
       </Stack.Navigator>
     </NavigationContainer>
   );
